@@ -21,6 +21,7 @@ export default function ContactPage() {
     businessNumber: "503-94-5547",
     address: "광주광역시 북구 일곡동 840-2",
     addressDetail: "양일로307",
+    parkingInfo: null,
     mainPhone: "062-571-2222",
     specialtyPhone: "062-369-2075 (이명치료)",
     weekdayOpen: "09:00",
