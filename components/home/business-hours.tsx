@@ -39,8 +39,8 @@ export function BusinessHours() {
         return currentMinutes >= 9 * 60 && currentMinutes < 13 * 60 ? "open" : "closed";
       }
 
-      // 평일
-      return currentMinutes >= 9 * 60 && currentMinutes < 17 * 60 + 30 ? "open" : "closed";
+      // 평일 (09:00 - 18:00, 접수 마감 17:30)
+      return currentMinutes >= 9 * 60 && currentMinutes < 18 * 60 ? "open" : "closed";
     };
 
     setStatus(checkBusinessHours());
@@ -106,11 +106,19 @@ export function BusinessHours() {
             <div className="space-y-1.5">
               <p className="flex justify-between">
                 <span className="text-gray-600">평일</span>
-                <span className="font-medium">09:00 - 17:30</span>
+                <span className="font-medium">09:00 - 18:00</span>
+              </p>
+              <p className="flex justify-between text-xs text-gray-500">
+                <span>접수마감</span>
+                <span>17:30</span>
               </p>
               <p className="flex justify-between">
                 <span className="text-gray-600">토요일</span>
                 <span className="font-medium">09:00 - 13:00</span>
+              </p>
+              <p className="flex justify-between text-xs text-gray-500">
+                <span>접수마감</span>
+                <span>12:30</span>
               </p>
               <p className="flex justify-between">
                 <span className="text-gray-600">점심시간</span>
@@ -119,6 +127,10 @@ export function BusinessHours() {
               <p className="flex justify-between text-red-500 font-medium mt-2">
                 <span>일요일/공휴일</span>
                 <span>휴진</span>
+              </p>
+              <p className="flex justify-between text-xs text-red-500">
+                <span>매월 둘째주 목요일</span>
+                <span>오전진료만</span>
               </p>
             </div>
           </div>

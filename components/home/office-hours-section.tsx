@@ -15,7 +15,8 @@ export function OfficeHoursSection() {
             <div>
               <p className="font-medium mb-2">평일</p>
               <p className="text-gray-600">오전 9:00 - 오후 6:00</p>
-              <p className="text-sm text-gray-500">점심시간 12:30 - 2:00</p>
+              <p className="text-sm text-gray-500">접수마감: 오후 5:30</p>
+              <p className="text-sm text-gray-500">점심시간: 오후 12:30 - 오후 2:00</p>
             </div>
           </div>
           <div className="flex items-start gap-4">
@@ -23,7 +24,9 @@ export function OfficeHoursSection() {
             <div>
               <p className="font-medium mb-2">토요일</p>
               <p className="text-gray-600">오전 9:00 - 오후 1:00</p>
+              <p className="text-sm text-gray-500">접수마감: 오후 12:30</p>
               <p className="text-sm text-primary text-red-600">일요일/공휴일 휴진</p>
+              <p className="text-sm text-primary text-red-600">매월 둘째주 목요일 오전진료만</p>
             </div>
           </div>
         </div>

@@ -63,7 +63,7 @@ export function Footer() {
                   <span className="font-medium text-primary">한방</span>
                   <span className="mx-2 text-gray-300">|</span>
                   <span className="space-x-2">
-                    <span>이비인후과</span>&nbsp; ·<span>내과</span>&nbsp; ·<span>침구과</span>&nbsp; ·<span>재활의학과</span>&nbsp; ·<span>사상체질과</span>
+                    <span>이비인후과</span>&nbsp; ·<span>침구과</span>&nbsp; ·<span>내과</span>&nbsp; ·<span>재활의학과</span>&nbsp; ·<span>사상체질과</span>
                     &nbsp; ·<span>정신신경과</span>&nbsp; ·<span>부인과</span>&nbsp; ·<span>소아과</span>
                   </span>
                 </div>
@@ -73,7 +73,7 @@ export function Footer() {
                   <span className="font-medium text-primary">양방</span>
                   <span className="mx-2 text-gray-300">|</span>
                   <span className="space-x-2">
-                    <span>가정의학과</span>&nbsp; ·<span>내과</span>&nbsp; ·<span>영상의학과</span>&nbsp; ·<span>재활의학과</span>
+                    <span>이비인후과</span>&nbsp; ·<span>내과</span>&nbsp; ·<span>영상의학과</span>&nbsp; ·<span>재활의학과</span>
                   </span>
                 </div>
               </div>

@@ -18,7 +18,7 @@
     "@fullcalendar/react": "^6.1.15",
     "@hookform/resolvers": "^3.9.0",
     "@next/swc-wasm-nodejs": "13.5.1",
-    "@prisma/client": "^6.2.1",
+    "@prisma/client": "^5.10.2",
     "@radix-ui/react-accordion": "^1.2.0",
     "@radix-ui/react-alert-dialog": "^1.1.1",
     "@radix-ui/react-aspect-ratio": "^1.1.0",
@@ -98,7 +98,7 @@
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.16",
     "@types/uuid": "^10.0.0",
-    "prisma": "^6.2.1",
+    "prisma": "^5.10.2",
     "sharp": "^0.33.5"
   }
 }

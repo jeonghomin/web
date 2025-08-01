@@ -28,6 +28,10 @@ const nextConfig = {
     ];
     return config;
   },
+  // 개발 서버 설정
+  devIndicators: {
+    buildActivity: false,
+  },
 };
 
 module.exports = withPWA(nextConfig);
