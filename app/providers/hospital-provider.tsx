@@ -38,7 +38,11 @@ export function HospitalProvider({ children }: { children: ReactNode }) {
     const fetchHospitalInfo = async () => {
       try {
         const response = await fetch("/api/hospital");
-        if (!response.ok) throw new Error("병원 정보를 불러오는데 실패했습니다.");
+        
+        if (!response.ok) {
+          throw new Error("병원 정보를 불러오는데 실패했습니다.");
+        }
+        
         const data = await response.json();
         setHospitalInfo(data);
       } catch (err) {

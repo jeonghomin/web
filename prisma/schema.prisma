@@ -148,18 +148,19 @@ model Account {
   scope             String?
   id_token          String?
   session_state     String?
-  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade, map: "accounts_userId_users_id_fk")
 
   @@unique([provider, providerAccountId])
+  @@unique([provider, providerAccountId], map: "accounts_provider_providerAccountId_key")
   @@map("accounts")
 }
 
 model Session {
   id           String   @id @default(cuid())
-  sessionToken String   @unique @map("session_token")
+  sessionToken String   @unique(map: "sessions_sessionToken_key") @map("session_token")
   userId       String   @map("user_id")
   expires      DateTime
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade, map: "sessions_userId_users_id_fk")
 
   @@map("sessions")
 }
