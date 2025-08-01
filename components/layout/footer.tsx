@@ -9,7 +9,28 @@ export function Footer() {
   const { hospitalInfo, isLoading } = useHospital();
   const currentYear = new Date().getFullYear();
 
-  if (!isFooterVisible || isLoading || !hospitalInfo) return null;
+  // 임시 하드코딩된 병원 정보 (데이터베이스 없이도 표시)
+  const tempHospitalInfo = {
+    name: "소리청 일곡에스한방병원",
+    representative: "대표자명",
+    businessNumber: "사업자등록번호",
+    address: "광주광역시 일곡동 123번지",
+    addressDetail: "2층",
+    mainPhone: "062-571-2222",
+    specialtyPhone: "062-369-2075 (이명치료)",
+    weekdayOpen: "09:00",
+    weekdayClose: "18:00",
+    saturdayOpen: "09:00",
+    saturdayClose: "13:00",
+    lunchStart: "12:30",
+    lunchEnd: "14:00",
+    closedDays: "일요일, 공휴일, 매월 둘째주 목요일 오후"
+  };
+
+  if (!isFooterVisible) return null;
+  
+  // 데이터베이스 정보가 없으면 임시 정보 사용
+  const displayInfo = hospitalInfo || tempHospitalInfo;
 
   return (
     <footer className="bg-gray-50">
@@ -19,39 +40,39 @@ export function Footer() {
             <h3 className="text-lg font-semibold mb-4">진료시간</h3>
             <div className="space-y-2 text-sm text-gray-600">
               <p>
-                평일: {hospitalInfo.weekdayOpen} - {hospitalInfo.weekdayClose}
+                평일: {displayInfo.weekdayOpen} - {displayInfo.weekdayClose}
               </p>
-              {hospitalInfo.saturdayOpen && hospitalInfo.saturdayClose && (
+              {displayInfo.saturdayOpen && displayInfo.saturdayClose && (
                 <p>
-                  토요일: {hospitalInfo.saturdayOpen} - {hospitalInfo.saturdayClose}
+                  토요일: {displayInfo.saturdayOpen} - {displayInfo.saturdayClose}
                 </p>
               )}
               <p>
-                점심시간: {hospitalInfo.lunchStart} - {hospitalInfo.lunchEnd}
+                점심시간: {displayInfo.lunchStart} - {displayInfo.lunchEnd}
               </p>
-              <p className="text-primary text-red-600">{hospitalInfo.closedDays} 휴진</p>
+              <p className="text-primary text-red-600">{displayInfo.closedDays} 휴진</p>
             </div>
           </div>
 
           <div>
             <h3 className="text-lg font-semibold mb-4">연락처</h3>
             <div className="space-y-2 text-sm text-gray-600">
-              {hospitalInfo.specialtyPhone && (
+              {displayInfo.specialtyPhone && (
                 <p className="flex items-center">
                   <Phone className="h-4 w-4 mr-2" />
-                  {hospitalInfo.specialtyPhone.split(" (")[0]}
-                  <span className="ml-2 text-primary">({hospitalInfo.specialtyPhone.split(" (")[1]?.replace(")", "")})</span>
+                  {displayInfo.specialtyPhone.split(" (")[0]}
+                  <span className="ml-2 text-primary">({displayInfo.specialtyPhone.split(" (")[1]?.replace(")", "")})</span>
                 </p>
               )}
               <p className="flex items-center">
                 <Phone className="h-4 w-4 mr-2" />
-                {hospitalInfo.mainPhone}
+                {displayInfo.mainPhone}
               </p>
               <p className="flex items-center">
                 <MapPin className="h-4 w-4 mr-2" />
-                {hospitalInfo.address}
+                {displayInfo.address}
               </p>
-              {hospitalInfo.addressDetail && <p className="ml-6">{hospitalInfo.addressDetail}</p>}
+              {displayInfo.addressDetail && <p className="ml-6">{displayInfo.addressDetail}</p>}
             </div>
           </div>
 
@@ -85,16 +106,16 @@ export function Footer() {
           <div className="text-center text-sm text-gray-500 space-y-2">
             <p className="flex items-center justify-center gap-2">
               <Building2 className="h-4 w-4" />
-              <span>대표: {hospitalInfo.representative}</span>
+              <span>대표: {displayInfo.representative}</span>
               <span className="mx-2">|</span>
-              <span>사업자등록번호: {hospitalInfo.businessNumber}</span>
+              <span>사업자등록번호: {displayInfo.businessNumber}</span>
             </p>
             <p>
-              주소: {hospitalInfo.address}
-              {hospitalInfo.addressDetail ? ` ${hospitalInfo.addressDetail}` : ""}
+              주소: {displayInfo.address}
+              {displayInfo.addressDetail ? ` ${displayInfo.addressDetail}` : ""}
             </p>
             <p>
-              © {currentYear} {hospitalInfo.name}. All rights reserved.
+              © {currentYear} {displayInfo.name}. All rights reserved.
             </p>
           </div>
         </div>
