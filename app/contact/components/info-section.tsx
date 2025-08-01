@@ -31,10 +31,11 @@ export function InfoSection() {
             <h3 className="text-xl font-bold">진료시간</h3>
           </div>
           <div className="space-y-2 text-gray-600">
-            <p>평일: 09:00 - 17:30</p>
+            <p>평일: 09:00 - 18:00</p>
             <p>토요일: 09:00 - 13:00</p>
             <p>점심시간: 12:30 - 14:00</p>
             <p className="text-primary font-medium text-red-600">일요일/공휴일 휴진</p>
+            <p className="text-primary font-medium text-red-600">매월 둘째주 목요일 오전진료만</p>
           </div>
         </Card>
       </motion.div>
@@ -48,8 +49,8 @@ export function InfoSection() {
             <h3 className="text-xl font-bold">오시는 길</h3>
           </div>
           <div className="space-y-2 text-gray-600">
-            <p>광주광역시 북구 일곡동 840-2번지</p>
-            <p>(양일로 307)</p>
+            <p>광주광역시 북구 일곡동 840-2</p>
+            <p>(양일로307)</p>
           </div>
         </Card>
       </motion.div>
