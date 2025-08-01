@@ -39,7 +39,7 @@ const doctors: Doctor[] = [
     name: "윤정수",
     role: "양방원장",
     department: "양방과",
-    image: "/윤정수_원장.png",
+    image: "/윤정수_원장_cut.PNG",
     education: ["1968.02 전남대 의대 16회 졸업"],
     career: [
       "1968.04~1971.06 국군 군의관으로 임무수행",

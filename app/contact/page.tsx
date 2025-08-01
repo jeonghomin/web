@@ -14,7 +14,28 @@ export default function ContactPage() {
   const [isOpen, setIsOpen] = useState(false);
   const { hospitalInfo, isLoading } = useHospital();
 
-  if (isLoading || !hospitalInfo) {
+  // 임시 하드코딩된 병원 정보 (데이터베이스 없이도 표시)
+  const tempHospitalInfo = {
+    name: "소리청 일곡에스한방병원",
+    representative: "대표원장 민용태",
+    businessNumber: "503-94-5547",
+    address: "광주광역시 북구 일곡동 840-2",
+    addressDetail: "양일로307",
+    mainPhone: "062-571-2222",
+    specialtyPhone: "062-369-2075 (이명치료)",
+    weekdayOpen: "09:00",
+    weekdayClose: "18:00",
+    saturdayOpen: "09:00",
+    saturdayClose: "13:00",
+    lunchStart: "12:30",
+    lunchEnd: "14:00",
+    closedDays: "일요일, 공휴일, 매월 둘째주 목요일 오후"
+  };
+
+  // 데이터베이스 정보가 없으면 임시 정보 사용
+  const displayInfo = hospitalInfo || tempHospitalInfo;
+
+  if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <BrandLoader variant="default" />
@@ -39,8 +60,8 @@ export default function ContactPage() {
                   <h3 className="text-xl font-bold">전화 예약</h3>
                 </div>
                 <div className="space-y-2 text-gray-600">
-                  {hospitalInfo.specialtyPhone && <p>Tel: {hospitalInfo.specialtyPhone}</p>}
-                  <p>Tel: {hospitalInfo.mainPhone}</p>
+                  {displayInfo.specialtyPhone && <p>Tel: {displayInfo.specialtyPhone}</p>}
+                  <p>Tel: {displayInfo.mainPhone}</p>
                 </div>
               </div>
 
@@ -53,11 +74,11 @@ export default function ContactPage() {
                 </div>
                 <div className="space-y-2 text-gray-600">
                   <p>
-                    평일: {hospitalInfo.weekdayOpen} - {hospitalInfo.weekdayClose}
+                    평일: {displayInfo.weekdayOpen} - {displayInfo.weekdayClose}
                   </p>
-                  {hospitalInfo.saturdayOpen && hospitalInfo.saturdayClose && (
+                  {displayInfo.saturdayOpen && displayInfo.saturdayClose && (
                     <p>
-                      토요일: {hospitalInfo.saturdayOpen} - {hospitalInfo.saturdayClose}
+                      토요일: {displayInfo.saturdayOpen} - {displayInfo.saturdayClose}
                     </p>
                   )}
                 </div>
@@ -72,9 +93,9 @@ export default function ContactPage() {
                 </div>
                 <div className="space-y-2 text-gray-600">
                   <p>
-                    점심시간: {hospitalInfo.lunchStart} - {hospitalInfo.lunchEnd}
+                    점심시간: {displayInfo.lunchStart} - {displayInfo.lunchEnd}
                   </p>
-                  <p className="text-red-600">{hospitalInfo.closedDays} 휴진</p>
+                  <p className="text-red-600">{displayInfo.closedDays} 휴진</p>
                 </div>
               </div>
             </div>
@@ -99,9 +120,9 @@ export default function ContactPage() {
             <div className="space-y-4">
               <KakaoMap />
               <div className="text-gray-600">
-                {hospitalInfo.parkingInfo && <p>주차: {hospitalInfo.parkingInfo}</p>}
-                {hospitalInfo.specialtyPhone && <p>전화: {hospitalInfo.specialtyPhone}</p>}
-                <p>전화: {hospitalInfo.mainPhone}</p>
+                {displayInfo.parkingInfo && <p>주차: {displayInfo.parkingInfo}</p>}
+                {displayInfo.specialtyPhone && <p>전화: {displayInfo.specialtyPhone}</p>}
+                <p>전화: {displayInfo.mainPhone}</p>
               </div>
             </div>
           </Card>
