@@ -9,8 +9,8 @@ export async function GET() {
     const dummyActivePopups = [
       {
         id: "popup-1",
-        title: "병원 휴무 안내",
-        content: "5월 1일은 근로자의 날로 휴무입니다.",
+        title: "진료시간 안내",
+        content: "평일 09:00-18:00, 토요일 09:00-13:00, 점심시간 12:30-14:00",
         imageUrl: "https://picsum.photos/800/600",
         startDate: new Date(new Date().setDate(new Date().getDate() - 5)).toISOString(),
         endDate: new Date(new Date().setDate(new Date().getDate() + 5)).toISOString(),
