@@ -28,7 +28,8 @@ export function Footer() {
     closedDays: "일요일, 공휴일, 매월 둘째주 목요일 오후"
   };
 
-  if (!isFooterVisible) return null;
+  // 임시로 푸터 항상 표시 (디버깅용)
+  // if (!isFooterVisible) return null;
   
   // 데이터베이스 정보가 없으면 임시 정보 사용
   const displayInfo = hospitalInfo || tempHospitalInfo;
