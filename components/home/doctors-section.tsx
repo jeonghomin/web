@@ -39,7 +39,7 @@ const doctors: Doctor[] = [
     name: "윤정수",
     role: "양방원장",
     department: "양방과",
-    image: "/윤정수_원장.jpg",
+    image: "/윤정수_원장.png",
     education: ["1968.02 전남대 의대 16회 졸업"],
     career: [
       "1968.04~1971.06 국군 군의관으로 임무수행",
@@ -61,7 +61,7 @@ function DoctorCard({ doctor }: { doctor: Doctor }) {
   return (
     <Card className="bg-white h-full rounded-xl shadow-[0_20px_50px_rgba(8,_112,_184,_0.07)] overflow-hidden">
       <div className="relative h-[300px]">
-        <Image src={doctor.image} alt={doctor.name} fill className="object-cover" />
+        <Image src={doctor.image} alt={doctor.name} fill className="object-cover object-top" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
         <div className="absolute bottom-0 left-0 p-6 text-white">
           <h3 className="text-xl font-bold mb-1">
