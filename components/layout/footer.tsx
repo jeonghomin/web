@@ -29,8 +29,8 @@ export function Footer() {
 
   if (!isFooterVisible) return null;
   
-  // 임시로 하드코딩된 정보 사용 (데이터베이스 문제 해결 전까지)
-  const displayInfo = tempHospitalInfo;
+  // 데이터베이스 정보가 없으면 임시 정보 사용
+  const displayInfo = hospitalInfo || tempHospitalInfo;
 
   return (
     <footer className="bg-gray-50">

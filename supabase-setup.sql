@@ -29,13 +29,14 @@ CREATE TABLE IF NOT EXISTS "hospital_info" (
 INSERT INTO "hospital_info" (
     "id", "name", "representative", "businessNumber", "address", 
     "mainPhone", "specialtyPhone", "weekdayOpen", "weekdayClose", 
-    "saturdayOpen", "saturdayClose", "lunchStart", "lunchEnd", "closedDays"
+    "saturdayOpen", "saturdayClose", "lunchStart", "lunchEnd", "closedDays",
+    "createdAt", "updatedAt"
 ) VALUES (
     'hospital-001',
     '소리청 일곡에스한방병원',
-    '대표자명',
-    '사업자등록번호',
-    '주소',
+    '대표원장 민용태',
+    '503-94-5547',
+    '광주광역시 북구 일곡동 840-2',
     '062-571-2222',
     '062-369-2075 (이명치료)',
     '09:00',
@@ -44,7 +45,9 @@ INSERT INTO "hospital_info" (
     '13:00',
     '12:30',
     '14:00',
-    '일요일, 공휴일, 매월 둘째주 목요일 오후'
+    '일요일, 공휴일, 매월 둘째주 목요일 오후',
+    CURRENT_TIMESTAMP,
+    CURRENT_TIMESTAMP
 ) ON CONFLICT ("id") DO UPDATE SET
     "name" = EXCLUDED."name",
     "mainPhone" = EXCLUDED."mainPhone",
@@ -76,10 +79,10 @@ CREATE TABLE IF NOT EXISTS "users" (
 -- Create accounts table (for OAuth)
 CREATE TABLE IF NOT EXISTS "accounts" (
     "id" TEXT NOT NULL,
-    "userId" TEXT NOT NULL,
+    "user_id" TEXT NOT NULL,
     "type" TEXT NOT NULL,
     "provider" TEXT NOT NULL,
-    "providerAccountId" TEXT NOT NULL,
+    "provider_account_id" TEXT NOT NULL,
     "refresh_token" TEXT,
     "access_token" TEXT,
     "expires_at" INTEGER,
@@ -94,8 +97,8 @@ CREATE TABLE IF NOT EXISTS "accounts" (
 -- Create sessions table
 CREATE TABLE IF NOT EXISTS "sessions" (
     "id" TEXT NOT NULL,
-    "sessionToken" TEXT NOT NULL,
-    "userId" TEXT NOT NULL,
+    "session_token" TEXT NOT NULL,
+    "user_id" TEXT NOT NULL,
     "expires" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "sessions_pkey" PRIMARY KEY ("id")
@@ -110,14 +113,14 @@ CREATE TABLE IF NOT EXISTS "verification_tokens" (
 
 -- Create unique constraints
 CREATE UNIQUE INDEX IF NOT EXISTS "users_email_key" ON "users"("email");
-CREATE UNIQUE INDEX IF NOT EXISTS "accounts_provider_providerAccountId_key" ON "accounts"("provider", "providerAccountId");
-CREATE UNIQUE INDEX IF NOT EXISTS "sessions_sessionToken_key" ON "sessions"("sessionToken");
+CREATE UNIQUE INDEX IF NOT EXISTS "accounts_provider_providerAccountId_key" ON "accounts"("provider", "provider_account_id");
+CREATE UNIQUE INDEX IF NOT EXISTS "sessions_sessionToken_key" ON "sessions"("session_token");
 CREATE UNIQUE INDEX IF NOT EXISTS "verification_tokens_token_key" ON "verification_tokens"("token");
 CREATE UNIQUE INDEX IF NOT EXISTS "verification_tokens_identifier_token_key" ON "verification_tokens"("identifier", "token");
 
 -- Add foreign key constraints
-ALTER TABLE "accounts" ADD CONSTRAINT "accounts_userId_users_id_fk" FOREIGN KEY ("userId") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE "sessions" ADD CONSTRAINT "sessions_userId_users_id_fk" FOREIGN KEY ("userId") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "accounts" ADD CONSTRAINT "accounts_userId_users_id_fk" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "sessions" ADD CONSTRAINT "sessions_userId_users_id_fk" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- Create RLS policies
 ALTER TABLE "hospital_info" ENABLE ROW LEVEL SECURITY;
@@ -135,13 +138,13 @@ CREATE POLICY "users_insert_policy" ON "users" FOR INSERT WITH CHECK (auth.uid()
 CREATE POLICY "users_update_policy" ON "users" FOR UPDATE USING (auth.uid()::text = id);
 
 -- Allow authenticated users to manage their accounts
-CREATE POLICY "accounts_select_policy" ON "accounts" FOR SELECT USING (auth.uid()::text = "userId");
-CREATE POLICY "accounts_insert_policy" ON "accounts" FOR INSERT WITH CHECK (auth.uid()::text = "userId");
-CREATE POLICY "accounts_update_policy" ON "accounts" FOR UPDATE USING (auth.uid()::text = "userId");
-CREATE POLICY "accounts_delete_policy" ON "accounts" FOR DELETE USING (auth.uid()::text = "userId");
+CREATE POLICY "accounts_select_policy" ON "accounts" FOR SELECT USING (auth.uid()::text = "user_id");
+CREATE POLICY "accounts_insert_policy" ON "accounts" FOR INSERT WITH CHECK (auth.uid()::text = "user_id");
+CREATE POLICY "accounts_update_policy" ON "accounts" FOR UPDATE USING (auth.uid()::text = "user_id");
+CREATE POLICY "accounts_delete_policy" ON "accounts" FOR DELETE USING (auth.uid()::text = "user_id");
 
 -- Allow authenticated users to manage their sessions
-CREATE POLICY "sessions_select_policy" ON "sessions" FOR SELECT USING (auth.uid()::text = "userId");
-CREATE POLICY "sessions_insert_policy" ON "sessions" FOR INSERT WITH CHECK (auth.uid()::text = "userId");
-CREATE POLICY "sessions_update_policy" ON "sessions" FOR UPDATE USING (auth.uid()::text = "userId");
-CREATE POLICY "sessions_delete_policy" ON "sessions" FOR DELETE USING (auth.uid()::text = "userId"); 
+CREATE POLICY "sessions_select_policy" ON "sessions" FOR SELECT USING (auth.uid()::text = "user_id");
+CREATE POLICY "sessions_insert_policy" ON "sessions" FOR INSERT WITH CHECK (auth.uid()::text = "user_id");
+CREATE POLICY "sessions_update_policy" ON "sessions" FOR UPDATE USING (auth.uid()::text = "user_id");
+CREATE POLICY "sessions_delete_policy" ON "sessions" FOR DELETE USING (auth.uid()::text = "user_id"); 
