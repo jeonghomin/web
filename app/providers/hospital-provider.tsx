@@ -37,15 +37,18 @@ export function HospitalProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const fetchHospitalInfo = async () => {
       try {
+        console.log("🏥 API 호출 시작: /api/hospital");
         const response = await fetch("/api/hospital");
         
         if (!response.ok) {
-          throw new Error("병원 정보를 불러오는데 실패했습니다.");
+          throw new Error(`병원 정보를 불러오는데 실패했습니다. (${response.status})`);
         }
         
         const data = await response.json();
+        console.log("🏥 병원 정보 조회 성공:", data);
         setHospitalInfo(data);
       } catch (err) {
+        console.error("🏥 병원 정보 조회 실패:", err);
         setError(err instanceof Error ? err : new Error("알 수 없는 오류가 발생했습니다."));
       } finally {
         setIsLoading(false);
@@ -70,7 +73,7 @@ export function HospitalProvider({ children }: { children: ReactNode }) {
 
 export function useHospital() {
   const context = useContext(HospitalContext);
-  if (context === undefined) {
+  if (context === undefined) { 
     throw new Error("useHospital must be used within a HospitalProvider");
   }
   return context;
