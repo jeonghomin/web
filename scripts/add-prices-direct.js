@@ -76,7 +76,7 @@ async function main() {
       { id: "item-027", categoryId: cat004.id, name: "마늘주사", description: "마늘주사", specification: "1회", priceType: "FIXED", priceMin: 30000, order: 6 },
 
       // 검사 항목들
-      { id: "item-028", categoryId: cat005.id, name: "적외선체열진단 체형분석기", description: "적외선체열진단 체형분석기", specification: "1회", priceType: "FIXED", priceMin: 50000, order: 1 },
+      { id: "item-028", categoryId: cat005.id, name: "적외선체열진단/체형분석기", description: "적외선체열진단/체형분석기", specification: "1회", priceType: "FIXED", priceMin: 50000, order: 1 },
     ];
 
     await prisma.priceItem.createMany({ data: items });
