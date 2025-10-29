@@ -2,6 +2,7 @@ import prisma from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
+
 interface PriceCategory {
   id: string;
   name: string;
@@ -71,5 +72,51 @@ export async function GET() {
   } catch (error) {
     console.error("가격표를 가져오는 중 오류가 발생했습니다:", error);
     return new NextResponse("가격표를 가져오는데 실패했습니다.", { status: 500 });
+  }
+}
+
+// POST 요청으로 데이터 추가
+export async function POST(request: Request) {
+  try {
+    const body = await request.json();
+    const { type, data } = body;
+
+    if (type === "category") {
+      const { name, order, parentId, level } = data;
+      const category = await prisma.priceCategory.create({
+        data: {
+          name,
+          order: order || 0,
+          parentId,
+          level: level || 0,
+          isActive: true,
+        },
+      });
+      return NextResponse.json(category);
+    }
+
+    if (type === "item") {
+      const { categoryId, name, description, specification, priceType, priceMin, priceMax, priceText, order } = data;
+      const item = await prisma.priceItem.create({
+        data: {
+          categoryId,
+          name,
+          description,
+          specification,
+          priceType,
+          priceMin,
+          priceMax,
+          priceText,
+          order: order || 0,
+          isActive: true,
+        },
+      });
+      return NextResponse.json(item);
+    }
+
+    return NextResponse.json({ error: "잘못된 요청입니다." }, { status: 400 });
+  } catch (error) {
+    console.error("데이터 추가 중 오류가 발생했습니다:", error);
+    return NextResponse.json({ error: "데이터 추가에 실패했습니다." }, { status: 500 });
   }
 }

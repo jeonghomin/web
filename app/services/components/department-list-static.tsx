@@ -2,8 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Stethoscope, Brain, Baby, Bone, Activity, Heart, UserCircle2 } from "lucide-react";
+import { Stethoscope, Brain, Baby, Bone, Activity, UserCircle2 } from "lucide-react";
 
 const departments = [
   // 한방 진료과목
@@ -94,7 +93,7 @@ const departments = [
   },
 ];
 
-export function DepartmentList() {
+export function DepartmentListStatic() {
   return (
     <section className="py-16">
       <div className="container mx-auto px-4">
@@ -168,3 +167,4 @@ export function DepartmentList() {
     </section>
   );
 }
+

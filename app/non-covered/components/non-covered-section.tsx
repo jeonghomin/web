@@ -42,44 +42,44 @@ function formatPrice(item: PriceItem) {
 
 export function NonCoveredSection({ items, isLoading = false }: NonCoveredSectionProps) {
   const renderCategory = (category: PriceCategory) => {
-    return (
-      <div key={category.id} className="space-y-4">
-        {category.level === 0 ? (
-          <>
-            <h3 className="text-xl font-semibold mb-4">{category.name}</h3>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead className="w-[25%]">항목</TableHead>
-                  <TableHead className="w-[25%]">구분</TableHead>
-                  <TableHead className="w-[25%]">규격</TableHead>
-                  <TableHead className="w-[25%] text-right">비용</TableHead>
+    // 카테고리에 직접 항목이 있으면 표시
+    if (category.items && category.items.length > 0) {
+      return (
+        <div key={category.id} className="space-y-4 mb-8">
+          <h3 className="text-2xl font-semibold mb-4">{category.name}</h3>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="w-[40%]">항목</TableHead>
+                <TableHead className="w-[20%]">구분</TableHead>
+                <TableHead className="w-[40%] text-right">비용</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {category.items.map((item) => (
+                <TableRow key={item.id}>
+                  <TableCell className="font-medium">{item.name}</TableCell>
+                  <TableCell>{item.specification || "-"}</TableCell>
+                  <TableCell className="text-right">{formatPrice(item)}</TableCell>
                 </TableRow>
-              </TableHeader>
-              <TableBody>
-                {category.children?.map((child) => {
-                  const items = child.items || [];
-                  return items.map((item, index) => (
-                    <TableRow key={item.id}>
-                      {index === 0 && (
-                        <TableCell className="font-medium bg-gray-50" rowSpan={items.length}>
-                          {child.name}
-                        </TableCell>
-                      )}
-                      <TableCell>{item.name}</TableCell>
-                      <TableCell>{item.specification || "-"}</TableCell>
-                      <TableCell className="text-right">{formatPrice(item)}</TableCell>
-                    </TableRow>
-                  ));
-                })}
-              </TableBody>
-            </Table>
-          </>
-        ) : null}
+              ))}
+            </TableBody>
+          </Table>
+        </div>
+      );
+    }
 
-        {category.level === 0 && category.children?.length > 0 && <div className="space-y-4">{category.children.map(renderCategory)}</div>}
-      </div>
-    );
+    // 하위 카테고리가 있으면 재귀적으로 렌더링
+    if (category.children && category.children.length > 0) {
+      return (
+        <div key={category.id} className="space-y-4">
+          {category.level === 0 && <h3 className="text-2xl font-semibold mb-4">{category.name}</h3>}
+          {category.children.map(renderCategory)}
+        </div>
+      );
+    }
+
+    return null;
   };
 
   if (isLoading) {
@@ -102,7 +102,10 @@ export function NonCoveredSection({ items, isLoading = false }: NonCoveredSectio
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto">
           <div className="space-y-8">{items.map(renderCategory)}</div>
-          <p className="text-sm text-gray-500 mt-8">※ 위 금액은 변동될 수 있으며, 실제 진료비는 환자의 상태와 치료 방법에 따라 달라질 수 있습니다.</p>
+          <div className="mt-8 space-y-2">
+            <p className="text-sm text-gray-500">※ 위 금액은 변동될 수 있으며, 실제 진료비는 환자의 상태와 치료 방법에 따라 달라질 수 있습니다.</p>
+            <p className="text-sm text-gray-600 font-medium">* 의료보험 적용이 안되는 제증명서류, 약제 및 치료제, 진료행위등을 기재</p>
+          </div>
         </div>
       </div>
     </section>

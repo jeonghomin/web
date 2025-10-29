@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useEffect } from "react";
-import { DepartmentList } from "./components/departments/department-list";
+import { DepartmentListStatic } from "./components/department-list-static";
 import { ServicesHero } from "./components/hero";
 import { format } from "date-fns";
 import { ko } from "date-fns/locale";
@@ -73,7 +73,7 @@ export default function ServicesPage() {
     return (
       <main className="min-h-screen">
         <ServicesHero />
-        <DepartmentList />
+        <DepartmentListStatic />
         <div className="py-20 bg-gray-50">
           <div className="container mx-auto px-4 text-center">
             <p>로딩 중...</p>
@@ -87,7 +87,7 @@ export default function ServicesPage() {
     return (
       <main className="min-h-screen">
         <ServicesHero />
-        <DepartmentList />
+        <DepartmentListStatic />
         <div className="py-20 bg-gray-50">
           <div className="container mx-auto px-4 text-center">
             <p className="text-red-500">{error}</p>
@@ -100,7 +100,7 @@ export default function ServicesPage() {
   return (
     <main className="min-h-screen">
       <ServicesHero />
-      <DepartmentList />
+      <DepartmentListStatic />
       <div id="cases-section" className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">

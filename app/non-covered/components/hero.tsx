@@ -18,7 +18,7 @@ export function NonCoveredHero() {
       {/* 콘텐츠 */}
       <div className="relative z-10 container mx-auto px-4 pt-[88px]">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="text-center text-white">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">비급여 진료비 안내</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">의료보수 및 비급여수가표</h1>
           <p className="text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
             다음 안내되는 비용은 참고용이며
             <br />
