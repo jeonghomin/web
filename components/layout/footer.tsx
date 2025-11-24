@@ -45,7 +45,7 @@ export function Footer() {
                 평일: {displayInfo.weekdayOpen} - {displayInfo.weekdayClose}
               </p>
               <p>
-                목요일, 토요일: 오전 9시 ~ 오후 12시 30분
+                목요일, 토요일: 09:00 - 12:30
               </p>
               <p>
                 점심시간: {displayInfo.lunchStart} - {displayInfo.lunchEnd}

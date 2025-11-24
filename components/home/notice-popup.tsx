@@ -187,6 +187,12 @@ export function NoticePopup({ notices }: NoticePopupProps) {
                 </div>
               )}
 
+              <div className="px-4 py-3 border-t border-gray-200 bg-white">
+                <p className="text-sm text-gray-700 leading-relaxed">
+                  목요일과 토요일은 오전 9시~12시 30분까지 오전 진료이고 일요일 공휴일은 휴진
+                </p>
+              </div>
+
               <div className="px-4 py-3 border-t border-gray-200 bg-gray-50">
                 <button
                   onClick={handleHideForDay}
