@@ -187,29 +187,6 @@ export function NoticePopup({ notices }: NoticePopupProps) {
                 </div>
               )}
 
-              <div className="px-4 py-3 border-t border-gray-200 bg-white">
-                <div className="text-sm text-gray-700 leading-relaxed space-y-2">
-                  <p className="font-bold text-gray-900 mb-2">진료시간 변경 안내</p>
-                  <p className="text-xs text-gray-600 mb-3">
-                    <span className="font-semibold">변경 기준일:</span> 2025년 12월 1일(월)
-                  </p>
-                  
-                  <div className="space-y-1.5 text-xs">
-                    <p className="font-semibold text-gray-800 mb-1">【 변경 내용 】</p>
-                    <p>• <span className="font-medium">현재:</span> 오전 9시 ~ 오후 5시 30분</p>
-                    <p>• <span className="font-medium">변경후:</span> 오전 9시 ~ 오후 6시</p>
-                    <p>• <span className="font-medium">진료 마감 시간:</span> 오후 5시 30분</p>
-                  </div>
-                  
-                  <div className="mt-3 pt-2 border-t border-gray-200">
-                    <p className="text-xs text-gray-600">
-                      <span className="font-semibold">【 안내사항 】</span><br />
-                      초진 시는 마감 시간 1시간 30분 전까지는 내원 하시기 바랍니다.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
               <div className="px-4 py-3 border-t border-gray-200 bg-gray-50">
                 <button
                   onClick={handleHideForDay}

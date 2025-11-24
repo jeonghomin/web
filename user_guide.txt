@@ -1,0 +1,3 @@
+vercel login
+vercel link
+vercel deploy --prod
