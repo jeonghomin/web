@@ -188,9 +188,34 @@ export function NoticePopup({ notices }: NoticePopupProps) {
               )}
 
               <div className="px-4 py-3 border-t border-gray-200 bg-white">
-                <p className="text-sm text-gray-700 leading-relaxed">
-                  목요일과 토요일은 오전 9시~12시 30분까지 오전 진료이고 일요일 공휴일은 휴진
-                </p>
+                <div className="text-sm text-gray-700 leading-relaxed space-y-2">
+                  <p className="font-semibold text-gray-900 mb-2">진료시간 변경 안내</p>
+                  <p className="text-xs text-gray-600 mb-3">2025년 12월 1일(월)부터 진료시간이 변경됩니다.</p>
+                  
+                  <div className="space-y-1.5 text-xs">
+                    <p className="font-medium text-gray-800">【 변경 내용 】</p>
+                    <p>• 기존: 오전 9시 ~ 오후 5시 30분</p>
+                    <p>• 변경: 오전 9시 ~ 오후 6시</p>
+                    <p>• 진료 마감: 오후 5시 30분</p>
+                  </div>
+                  
+                  <div className="space-y-1.5 text-xs mt-3">
+                    <p className="font-medium text-gray-800">【 요일별 진료시간 】</p>
+                    <p>• 평일: 오전 9시 ~ 오후 6시 (진료 마감: 오후 5시 30분)</p>
+                    <p>• 목요일, 토요일: 오전 9시 ~ 오후 12시 30분 (오전 진료)</p>
+                    <p>• 일요일, 공휴일: 휴진</p>
+                  </div>
+                  
+                  <div className="mt-3 pt-2 border-t border-gray-200">
+                    <p className="text-xs text-gray-600">
+                      <span className="font-medium">【 안내사항 】</span><br />
+                      초진 환자분께서는 진료 마감 시간 1시간 30분 전까지 내원해 주시기 바랍니다.<br />
+                      (초진 접수 마감: 오후 4시)
+                    </p>
+                  </div>
+                  
+                  <p className="text-xs text-gray-500 mt-2">많은 양해 부탁드립니다.</p>
+                </div>
               </div>
 
               <div className="px-4 py-3 border-t border-gray-200 bg-gray-50">
