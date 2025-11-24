@@ -9,26 +9,17 @@ export async function GET() {
     const dummyActivePopups = [
       {
         id: "popup-1",
-        title: "진료시간 안내",
-        content: "평일 09:00-18:00, 토요일 09:00-13:00, 점심시간 12:30-14:00",
-        imageUrl: "https://picsum.photos/800/600",
+        title: "진료시간 변경 안내",
+        content: `<p><strong>변경 기준일</strong> 2025년 12월 1일(월)</p>
+<p><strong>현재:</strong> 오전 9시 ~ 오후 5시 30분</p>
+<p><strong>변경후:</strong> 오전 9시 ~ 오후 6시</p>
+<p><strong>진료 마감 시간:</strong> 오후 5시 30분</p>
+<p>(초진 시는 마감 시간 1시간 30분 전까지는 내원 하시기 바랍니다.)</p>`,
+        imageUrl: null,
         startDate: new Date(new Date().setDate(new Date().getDate() - 5)).toISOString(),
         endDate: new Date(new Date().setDate(new Date().getDate() + 5)).toISOString(),
         isActive: true,
         priority: 3,
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
-        authorId: "user-1"
-      },
-      {
-        id: "popup-2",
-        title: "코로나19 예방접종 안내",
-        content: "코로나19 예방접종은 예약제로 운영됩니다.",
-        imageUrl: "https://picsum.photos/800/600",
-        startDate: new Date(new Date().setDate(new Date().getDate() - 10)).toISOString(),
-        endDate: new Date(new Date().setDate(new Date().getDate() + 10)).toISOString(),
-        isActive: true,
-        priority: 2,
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
         authorId: "user-1"

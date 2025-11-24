@@ -44,15 +44,13 @@ export function Footer() {
               <p>
                 평일: {displayInfo.weekdayOpen} - {displayInfo.weekdayClose}
               </p>
-              {displayInfo.saturdayOpen && displayInfo.saturdayClose && (
-                <p>
-                  토요일: {displayInfo.saturdayOpen} - {displayInfo.saturdayClose}
-                </p>
-              )}
+              <p>
+                목요일, 토요일: 오전 9시 ~ 오후 12시 30분
+              </p>
               <p>
                 점심시간: {displayInfo.lunchStart} - {displayInfo.lunchEnd}
               </p>
-              <p className="text-primary text-red-600">{displayInfo.closedDays} 휴진</p>
+              <p className="text-primary text-red-600">일요일, 공휴일 휴진</p>
             </div>
           </div>
 
