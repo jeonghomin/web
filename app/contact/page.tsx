@@ -27,10 +27,10 @@ export default function ContactPage() {
     weekdayOpen: "09:00",
     weekdayClose: "18:00",
     saturdayOpen: "09:00",
-    saturdayClose: "13:00",
+    saturdayClose: "12:30",
     lunchStart: "12:30",
     lunchEnd: "14:00",
-    closedDays: "일요일, 공휴일, 매월 둘째주 목요일 오후"
+    closedDays: "일요일, 공휴일"
   };
 
   // 데이터베이스 정보가 없으면 임시 정보 사용
@@ -79,7 +79,7 @@ export default function ContactPage() {
                   </p>
                   {displayInfo.saturdayOpen && displayInfo.saturdayClose && (
                     <p>
-                      토요일: {displayInfo.saturdayOpen} - {displayInfo.saturdayClose}
+                      목, 토: {displayInfo.saturdayOpen} - {displayInfo.saturdayClose}
                     </p>
                   )}
                 </div>

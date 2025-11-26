@@ -14,7 +14,14 @@ export async function GET() {
     }
 
     console.log("병원 정보 조회 성공:", hospitalInfo);
-    return NextResponse.json(hospitalInfo);
+    
+    // closedDays에서 "매월 둘째주 목요일 오후" 제거
+    const sanitizedHospitalInfo = {
+      ...hospitalInfo,
+      closedDays: hospitalInfo.closedDays?.replace(/,?\s*매월 둘째주 목요일 오후/gi, "").trim() || "일요일, 공휴일"
+    };
+    
+    return NextResponse.json(sanitizedHospitalInfo);
   } catch (error) {
     console.error("[HOSPITAL_GET]", error);
     return new NextResponse("내부 서버 오류", { status: 500 });

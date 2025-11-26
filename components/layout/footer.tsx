@@ -22,10 +22,10 @@ export function Footer() {
     weekdayOpen: "09:00",
     weekdayClose: "18:00",
     saturdayOpen: "09:00",
-    saturdayClose: "13:00",
+    saturdayClose: "12:30",
     lunchStart: "12:30",
     lunchEnd: "14:00",
-    closedDays: "일요일, 공휴일, 매월 둘째주 목요일 오후"
+    closedDays: "일요일, 공휴일"
   };
 
   // 임시로 푸터 항상 표시 (디버깅용)
@@ -45,7 +45,7 @@ export function Footer() {
                 평일: {displayInfo.weekdayOpen} - {displayInfo.weekdayClose}
               </p>
               <p>
-                목요일, 토요일: 09:00 - 12:30
+                목, 토: 09:00 - 12:30
               </p>
               <p>
                 점심시간: {displayInfo.lunchStart} - {displayInfo.lunchEnd}

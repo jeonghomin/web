@@ -36,7 +36,7 @@ export function BusinessHours() {
 
       // 토요일
       if (day === 6) {
-        return currentMinutes >= 9 * 60 && currentMinutes < 13 * 60 ? "open" : "closed";
+        return currentMinutes >= 9 * 60 && currentMinutes < 12 * 60 + 30 ? "open" : "closed";
       }
 
       // 평일 (09:00 - 18:00, 접수 마감 17:30)
@@ -114,7 +114,7 @@ export function BusinessHours() {
               </p>
               <p className="flex justify-between">
                 <span className="text-gray-600">목, 토</span>
-                <span className="font-medium">09:00 - 13:00</span>
+                <span className="font-medium">09:00 - 12:30</span>
               </p>
               <p className="flex justify-between text-xs text-gray-500">
                 <span>접수마감</span>

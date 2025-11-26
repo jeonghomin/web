@@ -490,7 +490,7 @@ export function ReservationDialog({ open, onOpenChange }: ReservationDialogProps
             <div className="space-y-2">
               <Label>예약 시간 선택</Label>
               <div className="text-sm text-muted-foreground">
-                {selectedDate?.getDay() === 6 ? "토요일: 09:00 - 13:00" : "평일: 09:00 - 17:30"}
+                {selectedDate?.getDay() === 6 ? "토요일: 09:00 - 12:30" : "평일: 09:00 - 17:30"}
                 {selectedDate && " (점심시간 12:30 - 14:00 제외)"}
               </div>
               <div className="grid grid-cols-3 gap-2 max-h-[200px] overflow-y-auto p-1">

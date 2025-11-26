@@ -22,8 +22,8 @@ export function OfficeHoursSection() {
           <div className="flex items-start gap-4">
             <Calendar className="w-5 h-5 text-primary mt-1" />
             <div>
-              <p className="font-medium mb-2">목요일, 토요일</p>
-              <p className="text-gray-600">오전 9:00 - 오후 12:30</p>
+              <p className="font-medium mb-2">목, 토</p>
+              <p className="text-gray-600">09:00 - 12:30</p>
               <p className="text-sm text-primary text-red-600 mt-2">일요일, 공휴일 휴진</p>
             </div>
           </div>
