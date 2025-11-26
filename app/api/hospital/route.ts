@@ -29,10 +29,24 @@ export async function GET() {
 
     console.log("병원 정보 조회 성공:", hospitalInfo);
     
-    // closedDays에서 "매월 둘째주 목요일 오후" 제거
+    // Supabase의 snake_case를 camelCase로 변환
     const sanitizedHospitalInfo = {
-      ...hospitalInfo,
-      closedDays: hospitalInfo.closedDays?.replace(/,?\s*매월 둘째주 목요일 오후/gi, "").trim() || "일요일, 공휴일"
+      id: hospitalInfo.id,
+      name: hospitalInfo.name,
+      representative: hospitalInfo.representative,
+      businessNumber: hospitalInfo.business_number,
+      address: hospitalInfo.address,
+      addressDetail: hospitalInfo.address_detail,
+      parkingInfo: hospitalInfo.parking_info,
+      mainPhone: hospitalInfo.main_phone,
+      specialtyPhone: hospitalInfo.specialty_phone,
+      weekdayOpen: hospitalInfo.weekday_open,
+      weekdayClose: hospitalInfo.weekday_close,
+      saturdayOpen: hospitalInfo.saturday_open,
+      saturdayClose: hospitalInfo.saturday_close,
+      lunchStart: hospitalInfo.lunch_start,
+      lunchEnd: hospitalInfo.lunch_end,
+      closedDays: (hospitalInfo.closed_days || "일요일, 공휴일").replace(/,?\s*매월 둘째주 목요일 오후/gi, "").trim() || "일요일, 공휴일"
     };
     
     return NextResponse.json(sanitizedHospitalInfo);
