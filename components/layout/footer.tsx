@@ -31,8 +31,8 @@ export function Footer() {
   // 임시로 푸터 항상 표시 (디버깅용)
   // if (!isFooterVisible) return null;
   
-  // 데이터베이스 정보가 없으면 임시 정보 사용
-  const displayInfo = hospitalInfo || tempHospitalInfo;
+  // 데이터베이스 정보가 없으면 임시 정보 사용 (현재는 항상 임시 정보 사용)
+  const displayInfo = tempHospitalInfo;
 
   return (
     <footer className="bg-gray-50">

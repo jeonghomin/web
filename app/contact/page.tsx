@@ -33,8 +33,8 @@ export default function ContactPage() {
     closedDays: "일요일, 공휴일"
   };
 
-  // 데이터베이스 정보가 없으면 임시 정보 사용
-  const displayInfo = hospitalInfo || tempHospitalInfo;
+  // 데이터베이스 정보가 없으면 임시 정보 사용 (현재는 항상 임시 정보 사용)
+  const displayInfo = tempHospitalInfo;
 
   if (isLoading) {
     return (
