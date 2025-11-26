@@ -113,7 +113,7 @@ export function BusinessHours() {
                 <span>17:30</span>
               </p>
               <p className="flex justify-between">
-                <span className="text-gray-600">토요일</span>
+                <span className="text-gray-600">목, 토</span>
                 <span className="font-medium">09:00 - 13:00</span>
               </p>
               <p className="flex justify-between text-xs text-gray-500">
@@ -127,10 +127,6 @@ export function BusinessHours() {
               <p className="flex justify-between text-red-500 font-medium mt-2">
                 <span>일요일/공휴일</span>
                 <span>휴진</span>
-              </p>
-              <p className="flex justify-between text-xs text-red-500">
-                <span>매월 둘째주 목요일</span>
-                <span>오전진료만</span>
               </p>
             </div>
           </div>
