@@ -13,7 +13,7 @@ export function Footer() {
   const tempHospitalInfo = {
     name: "소리청 일곡에스한방병원",
     representative: "대표원장 민용태",
-    businessNumber: "503-94-5547",
+    businessNumber: "503-94-25547",
     address: "광주광역시 북구 일곡동 840-2",
     addressDetail: "양일로307",
     parkingInfo: null,
