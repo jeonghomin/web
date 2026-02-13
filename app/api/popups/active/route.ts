@@ -9,15 +9,26 @@ export async function GET() {
     const dummyActivePopups = [
       {
         id: "popup-1",
-        title: "진료시간 변경 안내",
-        content: `<p><strong>변경 기준일</strong> 2025년 12월 1일(월)</p>
-<p><strong>현재:</strong> 09:00 ~ 17:30</p>
-<p><strong>변경후:</strong> 09:00 ~ 18:00</p>
-<p><strong>접수 마감 시간:</strong> 17:30</p>
-<p>(초진 시는 마감 시간 1시간 30분 전까지는 내원 하시기 바랍니다.)</p>`,
+        title: "🎊 설날 진료 안내",
+        content: `<p style="text-align:center;margin-bottom:12px"><strong style="font-size:17px;color:#dc2626">설날 연휴 진료 안내</strong></p>
+<table style="width:100%;border-collapse:collapse;margin-bottom:12px">
+<tr style="background:#fef2f2">
+<td style="padding:8px 12px;border:1px solid #fecaca;font-weight:bold;color:#dc2626">2/16 (월)</td>
+<td style="padding:8px 12px;border:1px solid #fecaca;color:#dc2626;font-weight:bold">휴진</td>
+</tr>
+<tr style="background:#fef2f2">
+<td style="padding:8px 12px;border:1px solid #fecaca;font-weight:bold;color:#dc2626">2/17 (화)</td>
+<td style="padding:8px 12px;border:1px solid #fecaca;color:#dc2626;font-weight:bold">휴진</td>
+</tr>
+<tr style="background:#eff6ff">
+<td style="padding:8px 12px;border:1px solid #bfdbfe;font-weight:bold;color:#1d4ed8">2/18 (수)</td>
+<td style="padding:8px 12px;border:1px solid #bfdbfe;color:#1d4ed8;font-weight:bold">오전 진료 (09:00 ~ 12:30)</td>
+</tr>
+</table>
+<p style="text-align:center;color:#6b7280;font-size:13px">즐거운 설 명절 보내세요! 🙏</p>`,
         imageUrl: null,
-        startDate: new Date(new Date().setDate(new Date().getDate() - 5)).toISOString(),
-        endDate: new Date(new Date().setDate(new Date().getDate() + 5)).toISOString(),
+        startDate: new Date("2025-02-10").toISOString(),
+        endDate: new Date("2025-02-19").toISOString(),
         isActive: true,
         priority: 3,
         createdAt: new Date().toISOString(),

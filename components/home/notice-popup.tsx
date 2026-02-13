@@ -1,11 +1,10 @@
 "use client";
 
-import { NoticeCategory, PopupNotice } from "@prisma/client";
+import { PopupNotice } from "@prisma/client";
 import { AnimatePresence, motion } from "framer-motion";
 import { CalendarDays, ChevronLeft, ChevronRight, X } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { TipTapViewer } from "@/components/editor/tiptap-viewer";
 
 const POPUP_HIDE_KEY = "notice-popup-hide-all";
 
@@ -181,9 +180,10 @@ export function NoticePopup({ notices }: NoticePopupProps) {
 
               {currentNotice.content && (
                 <div className={`px-4 py-3 ${currentNotice.imageUrl ? "max-h-[25vh]" : "max-h-[32vh]"} overflow-y-auto border-t border-gray-200 bg-white`}>
-                  <div className="prose prose-sm max-w-none">
-                    <TipTapViewer content={currentNotice.content} />
-                  </div>
+                  <div
+                    className="prose prose-sm max-w-none [&_table]:w-full [&_td]:p-2 [&_strong]:font-bold"
+                    dangerouslySetInnerHTML={{ __html: currentNotice.content }}
+                  />
                 </div>
               )}
 

@@ -95,3 +95,4 @@ export const priceCategories: PriceCategory[] = [
   },
 ];
 
+
