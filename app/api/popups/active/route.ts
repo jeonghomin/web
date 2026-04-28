@@ -27,8 +27,8 @@ export async function GET() {
 </table>
 <p style="text-align:center;color:#6b7280;font-size:13px">즐거운 설 명절 보내세요! 🙏</p>`,
         imageUrl: null,
-        startDate: new Date("2025-02-10").toISOString(),
-        endDate: new Date("2025-02-19").toISOString(),
+        startDate: new Date(new Date().setDate(new Date().getDate() - 5)).toISOString(),
+        endDate: new Date(new Date().setDate(new Date().getDate() + 10)).toISOString(),
         isActive: true,
         priority: 3,
         createdAt: new Date().toISOString(),
